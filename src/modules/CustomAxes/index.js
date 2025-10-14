@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 export function isVisibleAxeDragItemMenuOption(props) {
   const { optionName, config, field, componentType } = props;
 
@@ -53,11 +55,45 @@ export function isVisibleAxe(props) {
 export function sortAxes(props) {
   const { config, component, axisNames } = props;
 
-  return [];
+  const axesSorted = _.keys(axisNames);
+  return _.filter(_.compact(_.at(_.keyBy(config.axes, 'type'), axesSorted)), (axe) => {
+    return true;
+  });
 }
 
 export function isDisabledAxe(props) {
   const { axe, field, fieldIndex, config, componentType } = props;
+
+  const valuesAxe = _.find(config.axes, ['type', 'values']) || {};
+  const allowMultivalues = valuesAxe.selectedFieldIndex === -2;
+  const categoriesAxe = _.find(config.axes, ['type', 'categories']) || {};
+  const allowCategories = categoriesAxe.selectedFieldIndex !== -1;
+  const seriesAxe = _.find(config.axes, ['type', 'series']) || {};
+  const allowSeries = seriesAxe.selectedFieldIndex !== -1;
+
+  let disabled = fieldIndex !== 0;
+  switch (axe.type) {
+    case 'values':
+      if (allowMultivalues) {
+        disabled = false;
+      }
+      break;
+    case 'categories':
+      if (!allowCategories) {
+        disabled = true;
+      }
+      break;
+    case 'series':
+      if (!allowSeries) {
+        disabled = true;
+      }
+      break;
+    case 'filters':
+      disabled = false;
+      break;
+    default:
+      break;
+  }
 
   return disabled;
 }

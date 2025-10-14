@@ -1,8 +1,8 @@
 {
-  "name": "core.universal-stub",
+  "name": "core.waterfall-echarts",
   "version": "1.0.0",
   "apiVersion": "0.0.1",
-  "description": "Шаблон",
+  "description": "Диаграмма 'Водопад' на движке echarts",
   "files": [
     {
       "path": "plugin.js",

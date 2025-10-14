@@ -1,7 +1,7 @@
 {
-  "title": "Шаблон ***PLUGIN***",
+  "title": "Водопад (ECharts) ***PLUGIN***",
   "subtitle": "",
-  "chartType": "referenceStub",
+  "chartType": "waterfallChart",
   "showtitle": true,
   "noexport": false,
   "nocopy": false,

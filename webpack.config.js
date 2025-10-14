@@ -29,6 +29,7 @@ const webpackConfig = {
     {
       react: 'React',
       'react-dom': 'ReactDOM',
+      echarts: 'echarts',
     },
   ],
   module: {

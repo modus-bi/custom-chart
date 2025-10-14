@@ -1,6 +1,6 @@
-# **Plugin for ModusBI**
+# **Waterfall Plugin for ModusBI**
 
-Плагин для визуализации, расширяющий функциональность аналитической платформы **ModusBI**.
+Плагин для визуализации диаграмм Waterfall на основе **ECharts**, расширяющий функциональность аналитической платформы **ModusBI**.
 
 ---
 
@@ -13,6 +13,7 @@
 - [React](https://github.com/facebook/react) ^16.13.1
 - [Redux](https://github.com/reduxjs/redux)
 - [Webpack](https://github.com/webpack/webpack)
+- [ECharts](https://echarts.apache.org/)
 
 ---
 

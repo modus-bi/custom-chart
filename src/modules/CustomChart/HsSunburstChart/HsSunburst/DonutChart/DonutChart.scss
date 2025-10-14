@@ -1,0 +1,68 @@
+.sunburstCanvas {
+  .popupTable {
+    display: table;
+    width: 300px;
+    padding: 2px;
+
+    .popupRow {
+      display: table-row;
+      font-family: 'Arial', sans-serif;;
+
+      .popupCell {
+        font-size: 90%;
+        display: table-cell;
+        padding: 5px;
+      }
+
+      .popupHeader {
+        font-size: 80%;
+        font-weight: bolder;
+        color: gray
+      }
+    }
+  }
+
+  /*font-family: 'Arial', sans-serif;*/
+  /*color: #333333;*/
+
+  /* styling for the donut slices*/
+  path {
+    shape-rendering: geometricPrecision;
+  }
+
+  /* Make the percentage on the text labels bold*/
+  .labelText1, .labelText2 tspan {
+    font-style: normal;
+    /*font-weight: 700;*/
+  }
+
+  /* In biology we generally italicise species names. */
+  .labelText1, .labelText2 {
+    font-size: .8em;
+    fill: white;
+    /*font-weight: 700;*/
+  }
+
+  //.returnCircle {
+  //  cursor: url("/css/images/home-16.png"), auto;
+  //}
+
+  .minusButton, .plusButton {
+    color: black;
+    stroke: #aaa;
+    fill: #eee;
+    cursor: pointer;
+  }
+
+  .minusButton:hover, .plusButton:hover {
+    fill: #ccc;
+  }
+
+  .minusLabel, .plusLabel {
+    font-size: 2em;
+    cursor: pointer;
+    text-anchor: middle;
+    pointer-events: none;
+  }
+
+}

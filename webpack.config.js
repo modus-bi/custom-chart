@@ -29,6 +29,7 @@ const webpackConfig = {
     {
       react: 'React',
       'react-dom': 'ReactDOM',
+      'react-dom/server': 'ReactDOMServer',
     },
   ],
   module: {

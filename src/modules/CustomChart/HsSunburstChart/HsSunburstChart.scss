@@ -1,0 +1,17 @@
+.popupDiv {
+  background: black;
+  color: white;
+  display: block;
+  z-index: 1000;
+  position: absolute;
+  pointer-events: none;
+}
+
+.sunburstCanvas {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+

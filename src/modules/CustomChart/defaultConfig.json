@@ -1,42 +1,21 @@
 {
-  "title": "Шаблон ***PLUGIN***",
+  "title": "Солнечные лучи",
   "subtitle": "",
-  "chartType": "referenceStub",
+  "chartType": "customChart",
   "showtitle": true,
   "noexport": false,
   "nocopy": false,
   "filterMode": false,
-  "bigNumberClasses": [],
   "margin": {
-    "l": 15,
-    "r": 15,
-    "t": 15,
+    "l": 0,
+    "r": 0,
+    "t": 0,
     "b": 0,
     "pad": 0
   },
   "outline": {
-    "color": "#DDDFE4",
-    "enabled": true,
-    "width": 1
-  },
-  "balloon": {
-    "visible": true
-  },
-  "labels": {
-    "visible": true,
-    "inner": {
-      "fontsize": 12,
-      "color": "#FFF"
-    },
-    "outer": {
-      "fontsize": 12,
-      "color": "#FFF"
-    },
-    "value": {
-      "fontsize": 16,
-      "color": "#FFF",
-      "topMargin": 5
-    }
+    "enabled": false,
+    "width": 4
   },
   "axes": [
     {
@@ -68,19 +47,14 @@
           "alias": "Район_OSM",
           "title": ""
         }
-      ]
-    },
-    {
-      "name": "series",
-      "type": "series",
-      "title": "Серии",
-      "fields": [],
-      "selectedFieldIndex": -1
+      ],
+      "selectedFieldIndex": -2
     },
     {
       "name": "Значения",
       "title": "Значения",
       "type": "values",
+      "selectedFieldIndex": 0,
       "fields": [
         {
           "datasetId": 3,

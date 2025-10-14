@@ -1,8 +1,6 @@
 import ComponentTypeManager from 'managers/ComponentTypeManager';
 
-
 export default class CommonSpecGenerator {
-
   static getDefaultSpec(type) {
     const defaultComponent = new ComponentTypeManager(type).getDefaultComponent();
     return defaultComponent.spec || {};

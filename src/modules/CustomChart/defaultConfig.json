@@ -1,0 +1,99 @@
+{
+  "title": "Шаблон ***PLUGIN***",
+  "subtitle": "",
+  "chartType": "referenceStub",
+  "showtitle": true,
+  "noexport": false,
+  "nocopy": false,
+  "filterMode": false,
+  "bigNumberClasses": [],
+  "margin": {
+    "l": 15,
+    "r": 15,
+    "t": 15,
+    "b": 0,
+    "pad": 0
+  },
+  "outline": {
+    "color": "#DDDFE4",
+    "enabled": true,
+    "width": 1
+  },
+  "balloon": {
+    "visible": true
+  },
+  "labels": {
+    "visible": true,
+    "inner": {
+      "fontsize": 12,
+      "color": "#FFF"
+    },
+    "outer": {
+      "fontsize": 12,
+      "color": "#FFF"
+    },
+    "value": {
+      "fontsize": 16,
+      "color": "#FFF",
+      "topMargin": 5
+    }
+  },
+  "axes": [
+    {
+      "name": "filters",
+      "title": "Фильтры",
+      "type": "filters",
+      "fields": []
+    },
+    {
+      "name": "Категории",
+      "title": "Категории",
+      "type": "categories",
+      "fields": [
+        {
+          "datasetId": 3,
+          "agg": null,
+          "units": null,
+          "type": "string",
+          "name": "Округ",
+          "alias": "Округ",
+          "title": ""
+        },
+        {
+          "datasetId": 3,
+          "agg": null,
+          "units": null,
+          "type": "string",
+          "name": "Район_OSM",
+          "alias": "Район_OSM",
+          "title": ""
+        }
+      ]
+    },
+    {
+      "name": "series",
+      "type": "series",
+      "title": "Серии",
+      "fields": [],
+      "selectedFieldIndex": -1
+    },
+    {
+      "name": "Значения",
+      "title": "Значения",
+      "type": "values",
+      "fields": [
+        {
+          "datasetId": 3,
+          "agg": "sum",
+          "units": null,
+          "type": "number",
+          "name": "Значение",
+          "alias": "Значение",
+          "title": "",
+          "valueType": "value"
+        }
+      ]
+    }
+  ]
+}
+

@@ -59,7 +59,7 @@ export function sortAxes(props) {
 export function isDisabledAxe(props) {
   const { axe, field, fieldIndex, config, componentType } = props;
 
-  return disabled;
+  return false;
 }
 
 export function getAxeName(props) {

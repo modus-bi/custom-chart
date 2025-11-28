@@ -7,6 +7,7 @@
   "nocopy": false,
   "filterMode": false,
   "bigNumberClasses": [],
+  "bgColor":  null,
   "margin": {
     "l": 15,
     "r": 15,
@@ -40,59 +41,22 @@
   },
   "axes": [
     {
-      "name": "filters",
-      "title": "Фильтры",
-      "type": "filters",
+      "name": "Значения",
+      "title": "Значения",
+      "type": "values",
       "fields": []
     },
     {
       "name": "Категории",
       "title": "Категории",
       "type": "categories",
-      "fields": [
-        {
-          "datasetId": 3,
-          "agg": null,
-          "units": null,
-          "type": "string",
-          "name": "Округ",
-          "alias": "Округ",
-          "title": ""
-        },
-        {
-          "datasetId": 3,
-          "agg": null,
-          "units": null,
-          "type": "string",
-          "name": "Район_OSM",
-          "alias": "Район_OSM",
-          "title": ""
-        }
-      ]
+      "fields": []
     },
     {
-      "name": "series",
-      "type": "series",
-      "title": "Серии",
-      "fields": [],
-      "selectedFieldIndex": -1
-    },
-    {
-      "name": "Значения",
-      "title": "Значения",
-      "type": "values",
-      "fields": [
-        {
-          "datasetId": 3,
-          "agg": "sum",
-          "units": null,
-          "type": "number",
-          "name": "Значение",
-          "alias": "Значение",
-          "title": "",
-          "valueType": "value"
-        }
-      ]
+      "name": "filters",
+      "title": "Фильтры",
+      "type": "filters",
+      "fields": []
     }
   ]
 }

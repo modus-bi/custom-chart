@@ -1,5 +1,34 @@
+import _ from 'lodash';
+
+function isFieldAxesByType(config, field, type = 'values') {
+  const categoriesFields = _.find(config.axes, ['type', type])?.fields || [];
+  return !!categoriesFields.find((categoryField) => categoryField.id === field.id);
+}
+
 export function isVisibleAxeDragItemMenuOption(props) {
   const { optionName, config, field, componentType } = props;
+  if (isFieldAxesByType(config, field, 'categories')) {
+    let options = ['renderTitleInput', 'renderSortMenuItem', 'renderSortBySelector'];
+    if (field.type === 'calculated') {
+      options.push('renderEditCalcMenuItem');
+    }
+    return options.includes(optionName);
+  }
+  if (isFieldAxesByType(config, field, 'filters')) {
+    let options = ['renderTitleInput', 'renderFilterLevel', 'renderFilterSettings'];
+    if (field.type === 'calculated') {
+      options.push('renderEditCalcMenuItem');
+    }
+    return options.includes(optionName);
+  }
+  if (isFieldAxesByType(config, field, 'values')) {
+    let options = ['renderTitleInput', 'renderSortMenuItem', 'renderAggregationMenuItem'];
+    if (field.type === 'calculated') {
+      options = options.filter((option) => !['renderAggregationMenuItem'].includes(option));
+      options.push('renderEditCalcMenuItem', 'renderCalcHideResult');
+    }
+    return options.includes(optionName);
+  }
 
   switch (optionName) {
     case 'renderAddToTableToggle':
@@ -35,10 +64,19 @@ export function isVisibleAxeDragItemMenuOption(props) {
 }
 
 export function isVisibleAxeDragItemElement(props) {
-  const { elementName, componentType, config, field } = props;
+  const { elementName, config, field } = props;
+  if (isFieldAxesByType(config, field, 'values')) {
+    return ['renderAggregationSelector','renderSortSelector'].includes(elementName);
+  }
+  if (isFieldAxesByType(config, field, 'categories')) {
+    return ['renderSortSelector'].includes(elementName);
+  }
+  if (isFieldAxesByType(config, field, 'filters')) {
+    return false;
+  }
   switch (elementName) {
-    case 'renderSortSelector':
     case 'renderAggregationSelector':
+    case 'renderSortSelector':
     default:
       return false;
   }
@@ -52,14 +90,19 @@ export function isVisibleAxe(props) {
 
 export function sortAxes(props) {
   const { config, component, axisNames } = props;
-
-  return [];
+  return config.axes
 }
 
 export function isDisabledAxe(props) {
   const { axe, field, fieldIndex, config, componentType } = props;
 
-  return false;
+  const valuesAxe = _.find(config.axes, ['type', 'values']) || {};
+  const allowMultivalues = valuesAxe.selectedFieldIndex === -2;
+  let disabled = fieldIndex !== 0;
+  if (axe.type === 'values' && allowMultivalues) {
+    disabled = false
+  }
+  return disabled;
 }
 
 export function getAxeName(props) {

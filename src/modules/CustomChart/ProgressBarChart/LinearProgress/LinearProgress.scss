@@ -1,0 +1,26 @@
+.linearProgress {
+  &.isAnimated {
+    .linearProgressBar {
+      transition: width 2s ease 0s;
+    }
+  }
+
+  &Title {
+    font-size: 2rem;
+    line-height: 1.5;
+  }
+
+  &Container {
+    width: 100%;
+    background-color: #cccccc;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  &Bar {
+    height: 16px;
+    background-color: #7fb881;
+  }
+
+}

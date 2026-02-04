@@ -1,0 +1,12 @@
+node_modules
+.idea
+.vscode
+/build/
+/prebuild/
+/*.tar.gz
+
+.DS_STORE
+.~*.vue
+*.zip
+*.gzip
+*.log

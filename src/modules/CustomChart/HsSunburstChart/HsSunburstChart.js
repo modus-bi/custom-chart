@@ -27,7 +27,7 @@ class HsSunburstChart extends Component {
     changeGlobalFilterValueAndApply: PropTypes.func,
     changeMultipleGlobalFilterValueAndApply: PropTypes.func,
     changeFilterCategories: PropTypes.func,
-    muiTheme: PropTypes.object.isRequired,
+    hsTheme: PropTypes.object.isRequired,
     globals: PropTypes.object,
   };
 
@@ -83,7 +83,7 @@ class HsSunburstChart extends Component {
   }
 
   UNSAFE_componentWillUpdate(nextProps, nextState) {
-    const { palette } = this.props.muiTheme;
+    const { palette } = this.props.hsTheme;
     const { spec, reportOptions, globals } = nextProps;
     const { dataRes } = nextState;
 
@@ -202,7 +202,7 @@ class HsSunburstChart extends Component {
   };
 
   getStyles({ showTitle, subheader, subtitle, title }) {
-    const { palette, gridLayout } = this.props.muiTheme;
+    const { palette, gridLayout } = this.props.hsTheme;
 
     return {
       header: {

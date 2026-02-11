@@ -5,9 +5,6 @@ import _ from 'lodash';
 import { fontTypes } from 'duplicates/constants/visualsOptions';
 
 export default class VisualsOptions extends PureComponent {
-  static contextTypes = {
-    muiTheme: PropTypes.object.isRequired,
-  };
 
   static propTypes = {
     component: PropTypes.object,
@@ -16,8 +13,6 @@ export default class VisualsOptions extends PureComponent {
   };
 
   getStyles() {
-    const { palette } = this.context.muiTheme;
-
     return {
       textbox: { width: '100%', height: '36px' },
       mainSelector: { minWidth: '150px' },
@@ -25,7 +20,6 @@ export default class VisualsOptions extends PureComponent {
       sliderContainer: { zIndex: '-1', minWidth: '80px', maxWidth: '80px' },
       slider: { margin: '0', width: '95%' },
       textfieldSm: { width: '50px' },
-      calcLabel: { width: 120, textAlign: 'right', margin: '0 8px 0 0', color: palette.accent2Color },
     };
   }
 

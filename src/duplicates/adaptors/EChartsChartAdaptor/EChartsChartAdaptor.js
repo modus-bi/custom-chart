@@ -20,10 +20,6 @@ global.charts = [];
 
 export default class EChartsChartAdaptor extends Component {
 
-  static contextTypes = {
-    muiTheme: PropTypes.object.isRequired
-  };
-
   static propTypes = {
     id: PropTypes.string,
     componentId: PropTypes.number.isRequired,
@@ -34,6 +30,7 @@ export default class EChartsChartAdaptor extends Component {
     datasets: PropTypes.object,
     reportOptions: PropTypes.object,
     commonWidgets: PropTypes.object,
+    hsTheme: PropTypes.object,
 
     editorActive: PropTypes.bool.isRequired,
     mainMenuActive: PropTypes.bool,
@@ -184,8 +181,8 @@ export default class EChartsChartAdaptor extends Component {
   }
 
   mergeColors = () => {
-    const { reportOptions } = this.props;
-    const { palette } = this.context.muiTheme;
+    const { reportOptions, hsTheme } = this.props;
+    const { palette } = hsTheme;
     this.chartColors = getColorset(reportOptions, palette);
   }
 
@@ -488,7 +485,6 @@ export default class EChartsChartAdaptor extends Component {
       else {
         const currentSpec = _.cloneDeep(spec);
         _.set(currentSpec, 'id', id);
-        // Set muiTheme color palette (multiplied x10 times) for charts
         _.set(currentSpec, 'color', this.chartColors);
         // Set drill flag
         _.set(currentSpec, 'hasDrillDown', !!this.hasDrillDown);
@@ -557,9 +553,9 @@ export default class EChartsChartAdaptor extends Component {
   }
 
   getStyles = () => {
-    const { palette, gridLayout } = this.context.muiTheme;
     const { dataAdaptor } = this.state;
-    const { config } = this.props;
+    const { config, hsTheme } = this.props;
+    const { palette, gridLayout } = hsTheme;
     const data = (dataAdaptor || {}).plotData || [];
     const title = getLocal(config, 'title');
     const subtitle = getLocal(config, 'subtitle');

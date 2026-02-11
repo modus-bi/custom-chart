@@ -7,10 +7,6 @@ import ComponentTypeManager from '../../../managers/ComponentTypeManager';
 
 export default class CommonChartAdaptor extends Component {
 
-  static contextTypes = {
-    muiTheme: PropTypes.object.isRequired
-  };
-
   static propTypes = {
     id: PropTypes.string,
     content: PropTypes.object.isRequired,
@@ -22,6 +18,7 @@ export default class CommonChartAdaptor extends Component {
     datasets: PropTypes.object,
     reportOptions: PropTypes.object,
     commonWidgets: PropTypes.object,
+    hsTheme: PropTypes.object,
 
     editorActive: PropTypes.bool.isRequired,
     mainMenuActive: PropTypes.bool,
@@ -144,9 +141,9 @@ export default class CommonChartAdaptor extends Component {
   }
 
   getStyles = () => {
-    const { palette, gridLayout } = this.context.muiTheme;
     const { dataAdaptor } = this.state;
-    const { config, inEditor } = this.props;
+    const { config, inEditor, hsTheme } = this.props;
+    const { palette, gridLayout } = hsTheme;
     const data = (dataAdaptor || {}).plotData || [];
     const title = getLocal(config, 'title');
     const subtitle = getLocal(config, 'subtitle');

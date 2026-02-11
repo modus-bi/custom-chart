@@ -48,7 +48,7 @@
   skipRender,
   getCacheId,
   globals,
-  muiTheme,
+  hsTheme,
   locale,
 
   loadDatas,
@@ -92,7 +92,7 @@
 {
   component,
   reportlist,
-  muiTheme,
+  hsTheme,
   locale,
 
   changeChart,

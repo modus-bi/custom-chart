@@ -9,10 +9,6 @@ export default class CustomChart extends Component {
     return getDefaultConfig();
   }
 
-  static contextTypes = {
-    muiTheme: PropTypes.object.isRequired,
-  };
-
   static propTypes = {
     id: PropTypes.string,
     componentId: PropTypes.number.isRequired,
@@ -21,6 +17,7 @@ export default class CustomChart extends Component {
     type: PropTypes.string.isRequired,
     config: PropTypes.object.isRequired,
     configDraft: PropTypes.object,
+    hsTheme: PropTypes.object.isRequired,
     datas: PropTypes.object,
     loadDatas: PropTypes.func.isRequired,
     editable: PropTypes.bool,
@@ -43,7 +40,7 @@ export default class CustomChart extends Component {
         config={updatedConfig}
         onComponentChange={changeEditorComponent}
         {...this.props}
-        theme={this.context.muiTheme}
+        theme={this.props.hsTheme}
       />
     );
   }

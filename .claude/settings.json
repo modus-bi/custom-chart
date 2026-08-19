@@ -28,8 +28,10 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"${CLAUDE_PROJECT_DIR}/.claude/hooks/guard-paths.sh\"",
-            "timeout": 10
+            "command": "${CLAUDE_PROJECT_DIR}/.claude/hooks/guard-paths.sh",
+            "args": ["${tool_input.file_path}"],
+            "timeout": 10,
+            "statusMessage": "проверка пути правки"
           }
         ]
       }
@@ -40,7 +42,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"${CLAUDE_PROJECT_DIR}/.claude/hooks/typecheck.sh\"",
+            "command": "${CLAUDE_PROJECT_DIR}/.claude/hooks/typecheck.sh",
+            "args": ["${tool_input.file_path}"],
             "timeout": 120,
             "statusMessage": "tsc --noEmit"
           }

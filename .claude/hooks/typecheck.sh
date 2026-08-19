@@ -5,6 +5,11 @@
 # соответствие семи экспортов контракту ядра проверяется только компилятором.
 # lint-staged гоняет ESLint и Prettier, типы не трогает; CI нет.
 #
+# Путь к правленому файлу приходит первым аргументом: его подставляет `args`
+# в .claude/settings.json. Ответ сериализует node — вывод компилятора содержит кавычки
+# и переводы строк, собирать такой JSON конкатенацией нельзя. Node доступен всегда:
+# им же запускается tsc строкой ниже.
+#
 # Два режима, потому что tsc проверяет проект целиком, а спеки входят в tsconfig:
 #
 #   правился обычный файл        → выход 2, ошибки уезжают обратно в модель как блокирующие;
@@ -19,8 +24,12 @@ set -uo pipefail
 
 cd "${CLAUDE_PROJECT_DIR:-.}" || exit 0
 
-payload=$(cat)
-file=$(printf '%s' "$payload" | jq -r '.tool_response.filePath // .tool_input.file_path // ""')
+file=${1:-}
+
+# Пустой аргумент — инструмент без file_path либо неподставленный плейсхолдер.
+case "$file" in
+  '' | '${'*) exit 0 ;;
+esac
 
 case "$file" in
   *.ts | *.tsx) ;;
@@ -44,12 +53,21 @@ case "$file" in
         hint="Правился файл теста. Если ошибки указывают на отсутствующий экспорт или несуществующее API — это ожидаемое состояние фазы RED, продолжай. Ошибки в самом тесте (типы фикстур, заглушек, импортов) чини."
         ;;
     esac
-    jq -nc --arg errors "$errors" --arg hint "$hint" '{
-      hookSpecificOutput: {
-        hookEventName: "PostToolUse",
-        additionalContext: ("tsc --noEmit не проходит:\n" + $errors + "\n\n" + $hint)
-      }
-    }'
+    printf '%s' "$errors" | node -e '
+      let errors = "";
+      process.stdin
+        .on("data", (chunk) => (errors += chunk))
+        .on("end", () => {
+          process.stdout.write(
+            JSON.stringify({
+              hookSpecificOutput: {
+                hookEventName: "PostToolUse",
+                additionalContext: `tsc --noEmit не проходит:\n${errors}\n\n${process.argv[1]}`,
+              },
+            }),
+          );
+        });
+    ' "$hint"
     exit 0
     ;;
   *)

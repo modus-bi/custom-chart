@@ -1,6 +1,6 @@
 {
   "name": "template-plugin",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Шаблон плагина для ModusBI",
   "main": "index.ts",
   "author": "amerk <a1argus@gmail.com>",

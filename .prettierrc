@@ -1,5 +1,4 @@
 {
-  "parser": "babel",
   "semi": true,
   "arrowParens": "always",
   "singleQuote": true,

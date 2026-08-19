@@ -1,12 +1,21 @@
 node_modules
 .idea
-.vscode
+.vscode/
 /prebuild/
 /build/
+/temp/
 /*.tar.gz
 
-.DS_STORE
-.~*.vue
-*.zip
-*.gzip
-*.log
+# Playwright MCP: конфигурация (.playwright-mcp/config.json) коммитится,
+# профиль браузера, артефакты сессий и любые секреты — нет.
+/.playwright-mcp/user-data/
+/.playwright-mcp/output/
+/.playwright-mcp/storage-state.json
+/.playwright-mcp/secrets*
+
+# Claude Code: конфигурация команды (.claude/settings.json, хуки, агенты, скиллы)
+# коммитится, локальные переопределения и рабочие файлы сессий — нет.
+/.claude/settings.local.json
+/.claude/*.local.json
+
+.DS_Store

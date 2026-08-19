@@ -51,7 +51,7 @@ CustomSettings
 		OutlineOptionsContent,
     	mainOptions
 			autoApplyToggleContent,
-			showtitleToggleContent,
+			showTitleToggleContent,
 			titleTextFieldContent,
 			containerMarginSettingsContent,
 			precisionSliderContent,

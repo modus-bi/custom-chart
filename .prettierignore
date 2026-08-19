@@ -1,0 +1,15 @@
+build/
+prebuild/
+temp/
+node_modules/
+
+# Профиль браузера и артефакты сессий Playwright MCP — тысячи служебных файлов.
+# Сам конфиг (.playwright-mcp/config.json) форматируется как обычно.
+.playwright-mcp/user-data/
+.playwright-mcp/output/
+
+# Дословная копия контракта ядра ModusBI (prebuild/api/chartPlugin.d.ts).
+# Формат менять нельзя — иначе сверка с апстримом при обновлении ядра сломается молча.
+src/types/chartPlugin.d.ts
+
+package-lock.json

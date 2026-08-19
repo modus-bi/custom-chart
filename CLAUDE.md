@@ -85,8 +85,12 @@ ESLint 10, flat config ([eslint.config.js](eslint.config.js)): `@eslint/js` + `t
 | [`tdd`](.claude/skills/tdd/SKILL.md)                                                 | Перед реализацией любой функциональности и перед починкой бага — до написания кода                    |
 | [`new-setting`](.claude/skills/new-setting/SKILL.md)                                 | При добавлении, переименовании или удалении настройки правой панели                                   |
 | [`sync-contract`](.claude/skills/sync-contract/SKILL.md)                             | После обновления ядра в `prebuild/` и перед правкой контрактных экспортов                             |
+| [`chart-shell`](.claude/skills/chart-shell/SKILL.md)                                 | Перед созданием или правкой разметки вокруг холста — шапки, оборота, оверлеев                         |
+| [`migrate-to-typescript`](.claude/skills/migrate-to-typescript/SKILL.md)             | При переводе на TypeScript плагина, написанного на прежнем JS-шаблоне (тег `0.1.0`)                   |
 
-`typescript-coding-standards` задаёт правила языка, `tdd` и `new-setting` — процесс; они дополняют друг друга, а не заменяют.
+`typescript-coding-standards` задаёт правила языка, `tdd` и `new-setting` — процесс; они дополняют друг друга, а не заменяют. `chart-shell` описывает разметку вокруг холста: у шаблона её нет вовсе — `CustomChart` рендерит голый контейнер, а ядро подложку плагину не рисует.
+
+`migrate-to-typescript` работает в чужом репозитории — плагине пользователя, где этот шаблон служит образцом; пошаговый рецепт с готовыми конфигурациями лежит в [MIGRATION.md](MIGRATION.md).
 
 ### Сабагенты
 

@@ -1,0 +1,21 @@
+{
+  "title": "Новый плагин",
+  "subtitle": "",
+  "chartType": "templatePlugin",
+  "showtitle": true,
+  "noexport": false,
+  "nocopy": false,
+  "filterMode": false,
+  "bgColor": null,
+  "precision": 0,
+  "suffix": "",
+  "margin": { "l": 15, "r": 15, "t": 15, "b": 0, "pad": 0 },
+  "outline": { "color": "#DDDFE4", "enabled": true, "width": 1 },
+  "axes": [
+    { "name": "Значения", "title": "Значения", "type": "values", "selectedFieldIndex": -2, "fields": [] },
+    { "name": "Категории", "title": "Категории", "type": "categories", "selectedFieldIndex": 0, "fields": [] },
+    { "name": "Серии", "title": "Серии", "type": "series", "selectedFieldIndex": 0, "fields": [] },
+    { "name": "Детализация", "title": "Детализация", "type": "details", "selectedFieldIndex": 0, "fields": [] },
+    { "name": "filters", "title": "Фильтры", "type": "filters", "selectedFieldIndex": -2, "fields": [] }
+  ]
+}

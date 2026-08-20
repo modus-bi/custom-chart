@@ -1,0 +1,21 @@
+{
+  "browser": {
+    "browserName": "chromium",
+    "userDataDir": "./.playwright-mcp/user-data",
+    "launchOptions": {
+      "headless": false
+    },
+    "contextOptions": {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      }
+    }
+  },
+  "outputDir": "./.playwright-mcp/output",
+  "timeouts": {
+    "navigation": 60000,
+    "action": 5000
+  },
+  "imageResponses": "allow"
+}

@@ -21,9 +21,8 @@ function createTempFolder(folderPath) {
 
 function deleteFolder(folderPath) {
   try {
-    if (fs.existsSync(folderPath)) {
-      fs.rmdirSync(folderPath, { recursive: true }); // Используем rmdirSync с recursive
-    }
+    // force: true — отсутствующая папка не считается ошибкой, отдельная проверка не нужна.
+    fs.rmSync(folderPath, { recursive: true, force: true });
   } catch (err) {
     console.error(`Ошибка при удалении временной папки: ${folderPath}`, err);
     throw err;

@@ -1,11 +1,11 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 
-import type { ChartConfig } from './plugin.types';
+import type { ChartConfig } from './model/plugin.types';
 
 import ComponentTypeManager from '../../managers/ComponentTypeManager';
 import DataAdaptor from './dataAdaptor';
-import { getDefaultConfig } from './getDefaultConfig';
-import { useChartSize } from './useChartSize';
+import { getDefaultConfig } from './model/getDefaultConfig';
+import { useChartSize } from './hooks/useChartSize';
 
 /** Ответ ядра на запрос данных: пока `fetching`, поля `data` ещё нет. */
 interface CoreData {
@@ -16,9 +16,15 @@ interface CoreData {
 /**
  * Инжект ядра: запрос данных для компонента.
  *
- * Пять аргументов — фактическая сигнатура ядра (см. `getChartData` в `prebuild/app.*.js`:
- * `loadDatas(datasetId, null, config.filters, queryObjects, { editor, componentId })`).
- * Второй аргумент ядро всегда передаёт как `null`.
+ * Пятью аргументами её зовёт штатный хост плагинных типов (см. `getChartData` в
+ * `prebuild/app.*.js`: `loadDatas(datasetId, null, config.filters, queryObjects,
+ * { editor, componentId })`). Второй аргумент ядро всегда передаёт как `null`.
+ *
+ * Шестой параметр ядра — `cacheId`, он перекрывает расчёт ключа кэша (`cacheId || getCacheId(...)`).
+ * Здесь он не объявлен, потому что шаблон его не передаёт: `getQueryObjects` — заглушка, гонять
+ * нечего. Реализуя запрос, объяви параметр и передавай `props.cacheId`: ядро считает ключ по
+ * своим `queryObjects`, и без этого ответ ляжет в ячейку с другим ключом, а `props.data` не
+ * появится никогда. Порядок работ — скилл `data-query-contract`, раздел «Ловушка cacheId».
  */
 type LoadDatas = (
   datasetId: string,

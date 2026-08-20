@@ -105,8 +105,8 @@ git switch -c my-plugin 0.1.0
 | -------------------------------------------------------- | ----------------------------------------------- |
 | `package.json`                                           | `name`, `description`                           |
 | `manifest.example.json` → `build/manifest.json`          | `name`, `description`                           |
-| `src/modules/CustomChart/defaultConfig.json`             | `title`, `chartType`, состав полок              |
-| `src/modules/CustomChart/plugin.types.ts`                | поля `ChartConfig` под свои настройки           |
+| `src/modules/CustomChart/model/defaultConfig.json`       | `title`, `chartType`, состав полок              |
+| `src/modules/CustomChart/model/plugin.types.ts`          | поля `ChartConfig` под свои настройки           |
 | `src/modules/CustomChart/dataAdaptor.ts`                 | реализовать `getQueryObjects` и `remapData`     |
 | `src/modules/CustomSettings/`                            | свои секции в `sections/` (см. `Settings.tsx`)  |
 | `src/modules/CustomReducers/changeCustomChartReducer.ts` | таблица `COMMANDS` (шаблон в комментарии файла) |

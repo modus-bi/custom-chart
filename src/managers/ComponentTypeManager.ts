@@ -1,8 +1,10 @@
-import type { ChartConfig } from '../modules/CustomChart/plugin.types';
+import type { ChartConfig } from '../modules/CustomChart/model/plugin.types';
 
+// Прямые пути, а не публичный `../modules/CustomChart`: тот реэкспортирует `CustomChart`,
+// который сам зависит от этого менеджера, — импорт через границу модуля замкнул бы цикл.
 import ConfigEditor from '../modules/CustomChart/configEditor';
 import DataAdaptor from '../modules/CustomChart/dataAdaptor';
-import { getDefaultConfig } from '../modules/CustomChart/getDefaultConfig';
+import { getDefaultConfig } from '../modules/CustomChart/model/getDefaultConfig';
 import SpecGenerator from '../modules/CustomChart/specGenerator';
 
 interface DefaultComponent {

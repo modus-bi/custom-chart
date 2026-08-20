@@ -3,7 +3,7 @@
  *
  * contractVersion: 1.0.0
  * coreVersion:     3.16.3
- * скопировано:     2026-08-14
+ * скопировано:     2026-08-20
  *
  * Не редактировать вручную. При обновлении ядра заменить файл целиком
  * из prebuild/api/chartPlugin.d.ts и обновить версии в этой шапке.
@@ -164,8 +164,17 @@ export interface VisibleAxeDragItemMenuOptionContext extends AxeContextBase {
   optionName: string;
 }
 
-/** Контекст `getPillTypeOptions`. */
-export interface PillTypeOptionsContext extends AxeContextBase {
+/**
+ * Контекст `getPillTypeOptions`.
+ *
+ * @remarks
+ * Единственный контекст осей без `componentType`: ядро передаёт тип компонента первым
+ * аргументом диспетчера, но в объект пропсов его не кладёт. Обращаться к нему внутри
+ * метода нельзя — там будет `undefined`.
+ */
+export interface PillTypeOptionsContext {
+  config: PluginConfig;
+
   field: PluginField;
 
   /** Тип полки, на которой лежит пилюля: `values`, `categories`, `series`, `details`, `filters`. */

@@ -1,7 +1,7 @@
-import type { ChartAxe } from '../CustomChart/plugin.types';
+import type { ChartAxe } from '../CustomChart/model/plugin.types';
 
 import CustomAxes from './index';
-import { getDefaultConfig } from '../CustomChart/getDefaultConfig';
+import { getDefaultConfig } from '../CustomChart/model/getDefaultConfig';
 
 const config = getDefaultConfig();
 const axe = (type: string): ChartAxe => config.axes.find((item) => item.type === type) as ChartAxe;

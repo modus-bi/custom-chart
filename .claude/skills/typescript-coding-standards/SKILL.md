@@ -18,7 +18,7 @@ description: Конвенции TypeScript плагина ModusBI — имено
 
 Prettier — единственный источник истины по форматированию: 2 пробела, 120 колонок, одинарные кавычки в том числе в JSX, точки с запятой, trailing commas везде, по одному JSX-атрибуту на строку. Отступы и переносы вручную не выравнивай — `prettier --write` идёт на pre-commit через lint-staged.
 
-ESLint 9 (flat config) — `@eslint/js` + `typescript-eslint` recommended, `eslint-config-prettier` последним звеном.
+ESLint 10 (flat config, [eslint.config.js](../../../eslint.config.js)) — `@eslint/js` + `typescript-eslint` recommended, `eslint-config-prettier` последним звеном.
 
 `tsc --noEmit` со `strict: true` висит на PostToolUse-хуке: после правки `.ts`/`.tsx` ошибки типов вернутся сразу.
 
@@ -36,9 +36,11 @@ import type { PluginConfig, PluginInjectedProps } from '../../types/chartPlugin'
 
 В проекте `isolatedModules: true` и сборка через swc: каждый файл транспилируется отдельно, стереть тип-импорт по анализу использования компилятор не может. Обычный `import` типа остаётся в выводе как рантайм-импорт несуществующего модуля.
 
-**`import React` в каждом `.tsx`.** JSX собирается в classic runtime (`jsx: "react"`). Automatic runtime подтянул бы `react/jsx-runtime`, которого нет в `externals` — он уехал бы в бандл и разошёлся с React ядра. Правило живёт в [swc.config.js](swc.config.js), менять его не нужно.
+**`import React` в каждом `.tsx`.** JSX собирается в classic runtime (`jsx: "react"`). Automatic runtime подтянул бы `react/jsx-runtime`, которого нет в `externals` — он уехал бы в бандл и разошёлся с React ядра. Правило живёт в [swc.config.js](../../../swc.config.js), менять его не нужно.
 
 **Никаких новых рантайм-зависимостей без обсуждения.** В `externals` только `react` и `react-dom` — их даёт ядро. Всё остальное, что импортируется как значение, попадает в единый UMD-бандл и увеличивает его — библиотеку отрисовки и любой другой пакет добавляй только осознанно.
+
+Согласованное исключение одно: **`dompurify`** — им очищается HTML описания на обороте компонента (скилл `chart-shell`). Обсуждение по нему уже состоялось, отдельно спрашивать не нужно.
 
 **UI-примитивы не импортируются.** Компоненты интерфейса приходят из ядра через проп `pluginImports` (`.components`, `.sections`, `.services`). Прямого импорта UI-кита в плагине нет и быть не должно.
 
@@ -63,7 +65,7 @@ import type { PluginConfig, PluginInjectedProps } from '../../types/chartPlugin'
 
 ## 3. Типизация
 
-**`any` не используем.** Граница с ядром типизируется `unknown` с последующим сужением — так сделано в `changeCustomChartReducer.ts` и `types.ts`. Причина не в стиле: контракт `chartPlugin.d.ts` намеренно объявляет `config`, `field`, `axe`, `spec`, `data` как `any`-псевдонимы, потому что в ядре они на нетипизированном JS. Наш `unknown` — это явная отметка «форма неизвестна, сузь перед использованием», тогда как `any` тихо гасит проверки на всём пути.
+**`any` не используем.** Граница с ядром типизируется `unknown` с последующим сужением — так типизированы параметры заглушек `dataAdaptor.ts` (`_data: unknown`, `_spec: unknown`) и `ComponentTypeManager.getDataAdaptor`. Причина не в стиле: контракт `chartPlugin.d.ts` намеренно объявляет `config`, `field`, `axe`, `spec`, `data` как `any`-псевдонимы, потому что в ядре они на нетипизированном JS. Наш `unknown` — это явная отметка «форма неизвестна, сузь перед использованием», тогда как `any` тихо гасит проверки на всём пути.
 
 Сужай локально, ближе к использованию:
 
@@ -91,16 +93,16 @@ export type ChangeChart = (command: string, settings: { value: unknown }) => voi
 
 Правило зависит от **роли типа**, а не от того, сколько их в файле.
 
-| Роль типа                                                                           | Где объявлять                                                                                             |
-| ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| Props одного компонента                                                             | Рядом, в файле компонента. Это часть его сигнатуры                                                        |
-| Общие типы панели настроек (`ChangeChart`, тип props секции)                        | `src/modules/CustomSettings/types.ts` (заводится вместе с первой секцией — см. скилл `new-setting`)       |
-| **Форма данных**: `config`, `configDraft`, строки данных для отрисовки (`plotData`) | Отдельный `<имя>.types.ts` рядом с модулем — пример из проекта: `src/modules/CustomChart/plugin.types.ts` |
-| Снимок контракта ядра                                                               | `src/types/chartPlugin.d.ts`. Руками не пишется — переносится скиллом `sync-contract`                     |
+| Роль типа                                                                           | Где объявлять                                                                                                   |
+| ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| Props одного компонента                                                             | Рядом, в файле компонента. Это часть его сигнатуры                                                              |
+| Общие типы панели настроек (`ChangeChart`, тип props секции)                        | `src/modules/CustomSettings/types.ts` (заводится вместе с первой секцией — см. скилл `new-setting`)             |
+| **Форма данных**: `config`, `configDraft`, строки данных для отрисовки (`plotData`) | Отдельный `<имя>.types.ts` рядом с модулем — пример из проекта: `src/modules/CustomChart/model/plugin.types.ts` |
+| Снимок контракта ядра                                                               | `src/types/chartPlugin.d.ts`. Руками не пишется — переносится скиллом `sync-contract`                           |
 
 **Порог выноса: тип понадобился второму модулю или тесту — выноси.** Форма данных пересекает границы модулей по определению (редьюсер пишет `configDraft`, компонент читает `config`, адаптер строит `plotData`), поэтому для неё правило безусловное. Props компонента не покидают его файл, и вынос ради выноса только добавляет прыжок между файлами.
 
-Пример выноса — форма конфига (из проекта, `src/modules/CustomChart/plugin.types.ts`):
+Пример выноса — форма конфига (из проекта, `src/modules/CustomChart/model/plugin.types.ts`):
 
 ```ts
 // plugin.types.ts
@@ -142,8 +144,8 @@ import React, { useEffect } from 'react';
 
 import type { PluginConfig, PluginInjectedProps } from '../../types/chartPlugin';
 
-import { getDefaultConfig } from './getDefaultConfig';
-import { useChartSize } from './useChartSize';
+import { getDefaultConfig } from './model/getDefaultConfig';
+import { useChartSize } from './hooks/useChartSize';
 ```
 
 1. внешние пакеты;
@@ -165,11 +167,11 @@ sections/
     ColorSettingItem.spec.tsx
 ```
 
-`index.ts` заводим только там, где он реально нужен как точка входа (так сделано в `CustomAxes`), а не механически в каждом каталоге.
+`index.ts` заводим только там, где он реально нужен как точка входа: у модуля — да (`src/modules/CustomChart/index.ts` — публичный контракт модуля, `src/modules/CustomAxes/index.tsx` — сам объект осей), у подпапки модуля (`model/`, `ui/`, `hooks/`, `lib/`, `engine/`) — нет. Разбор правила — скилл `custom-chart-module`.
 
 Тесты — `*.spec.{ts,tsx}` рядом с кодом. Компонентный спек открывается docblock'ом `/** @jest-environment jsdom */`: глобальное окружение jest — `node`. Процесс написания — скилл `tdd`; правила этого скилла на спеки распространяются полностью, `import type` и `import React` в них так же обязательны.
 
-Глобальные типы jest подключены через `types: ["jest"]` в [tsconfig.json](tsconfig.json): без этого поля `tsc` падает на `describe` с `TS2593`. Указание `types` отключает автоподключение остальных `@types/*`, поэтому новый пакет с глобальными объявлениями надо дописывать в этот массив вручную. На типы, импортируемые явно (`@types/react`), это не влияет.
+Глобальные типы jest подключены через `types: ["jest"]` в [tsconfig.json](../../../tsconfig.json): без этого поля `tsc` падает на `describe` с `TS2593`. Указание `types` отключает автоподключение остальных `@types/*`, поэтому новый пакет с глобальными объявлениями надо дописывать в этот массив вручную. На типы, импортируемые явно (`@types/react`), это не влияет.
 
 ## 8. Комментарии
 

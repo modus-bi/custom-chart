@@ -42,16 +42,17 @@ model: inherit
 | `src/modules/**`, `src/managers/`, `src/index.ts` | Да. TypeScript, `strict: true`                                                    |
 | `prebuild/**`                                     | Нет. Распакованное ядро, каталог в `.gitignore` и перезаписывается. Хук блокирует |
 | `*.spec.*`                                        | Нет                                                                               |
+| `test/**`                                         | Нет. Заглушки тестового окружения — зона `test-writer`                            |
 
 ## Что помнить о плагине
 
 **Семь экспортов.** `src/index.ts` отдаёт `CustomChart`, `CustomReducers`, `CustomSettings`, `CustomAxes`, `DataAdaptor`, `SpecGenerator`, `ConfigEditor`. Ядро импортирует каждый статически; тип `ContractCheck` в том же файле роняет `tsc` при расхождении с контрактом.
 
-**Настройка живёт в четырёх местах:** компонент → `changeChart('<command>', { value })` → запись `команда → путь в конфиге` в таблице `COMMANDS` в `changeCustomChartReducer.ts` (веток `if` по команде там нет) → поле в `defaultConfig.json`. Возврат редьюсера обязан идти через `options.autoApplySettings(state)` — это функция ядра, а не флаг: без неё правка осядет в `configDraft` и не доедет до компонента, молча.
+**Настройка живёт в пяти местах:** пункт секции → её подключение в `Settings.tsx` → запись `команда → путь в конфиге` в таблице `COMMANDS` в `changeCustomChartReducer.ts` (веток `if` по команде там нет) → поле в `ChartConfig` → дефолт в `defaultConfig.json`. Полный порядок и шаблоны — скилл `new-setting`. Возврат редьюсера обязан идти через `options.autoApplySettings(state)` — это функция ядра, а не флаг: без неё правка осядет в `configDraft` и не доедет до компонента, молча.
 
 **UI-примитивы не импортируются** — приходят из ядра через `pluginImports.components` / `.sections` / `.services`.
 
-**Контракт ядра** — `prebuild/api/chartPlugin.d.ts`, его снимок — `src/types/chartPlugin.d.ts`. Перед правкой контрактных экспортов читай контракт, а не догадывайся. Внутренние структуры (`config`, `field`, `axe`, `spec`, `data`) там намеренно объявлены `any`-псевдонимами — их форму смотри по коду плагина и `src/modules/CustomChart/defaultConfig.json`.
+**Контракт ядра** — `prebuild/api/chartPlugin.d.ts`, его снимок — `src/types/chartPlugin.d.ts`. Перед правкой контрактных экспортов читай контракт, а не догадывайся. Внутренние структуры (`config`, `field`, `axe`, `spec`, `data`) там намеренно объявлены `any`-псевдонимами — их форму смотри по коду плагина и `src/modules/CustomChart/model/defaultConfig.json`.
 
 **Тексты интерфейса** — русские строковые литералы прямо в JSX.
 

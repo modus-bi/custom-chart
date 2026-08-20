@@ -8,13 +8,10 @@ import type { ChartPluginModule } from './types/chartPlugin';
 /** Самоссылка: `Self` — тип этого же модуля, то есть фактический набор экспортов ниже. */
 import type * as Self from './index';
 
-export { default as CustomChart } from './modules/CustomChart/CustomChart';
 export { default as CustomReducers } from './modules/CustomReducers/changeCustomChartReducer';
 export { default as CustomSettings } from './modules/CustomSettings/Settings';
 export { default as CustomAxes } from './modules/CustomAxes';
-export { default as DataAdaptor } from './modules/CustomChart/dataAdaptor';
-export { default as SpecGenerator } from './modules/CustomChart/specGenerator';
-export { default as ConfigEditor } from './modules/CustomChart/configEditor';
+export { CustomChart, DataAdaptor, SpecGenerator, ConfigEditor } from './modules/CustomChart';
 
 /**
  * Проверка соответствия контракту на этапе компиляции. Рантайм-кода не порождает.

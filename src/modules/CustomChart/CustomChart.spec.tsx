@@ -2,7 +2,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import type { ChartConfig, ChartField } from './plugin.types';
+import type { ChartConfig, ChartField } from './model/plugin.types';
 
 import ComponentTypeManager from '../../managers/ComponentTypeManager';
 import CustomChart, { getDatasetId } from './CustomChart';

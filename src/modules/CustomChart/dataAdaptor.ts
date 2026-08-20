@@ -1,4 +1,4 @@
-import type { ChartConfig, PlotRow } from './plugin.types';
+import type { ChartConfig, PlotRow } from './model/plugin.types';
 
 /**
  * Адаптор данных плагина.
@@ -66,10 +66,11 @@ export default class DataAdaptor {
    * Приводит `this.aggregated` к строкам `plotData`, которые понимает отрисовка
    * (`{ <имя поля измерения>…, <имя поля значения>… }`).
    *
-   * Ключи ответа бэкенда приходят алиасами вида `[categories]`, `[details]`, `[categories][0]` —
-   * скобки ядро снимает только у части из них (`splitTraces`: `categories`, `series`, `identity`,
-   * `linkage`, `node`), остальные остаются с квадратными скобками в имени ключа. Это первое,
-   * обо что спотыкается реализация: `row['[details]']`, а не `row['details']` или `row.details`.
+   * Ключи ответа бэкенда приходят алиасами вида `[categories]`, `[categories][0]` — скобки ядро
+   * снимает только у части из них (`splitTraces`: `categories`, `series`, `identity`, `linkage`,
+   * `node`), остальные остаются с квадратными скобками в имени ключа. Это первое, обо что
+   * спотыкается реализация: `row['[categories][0]']`, а не `row.categories`, когда пилюль
+   * на полке несколько.
    */
   remapData(_config: ChartConfig): this {
     this.plotData = [];

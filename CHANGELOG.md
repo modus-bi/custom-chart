@@ -12,11 +12,17 @@
 ### Добавлено
 
 - TypeScript со `strict: true` во всех модулях `src/`; `npm run typecheck` (`tsc --noEmit`).
-- Копия контракта ядра `src/types/chartPlugin.d.ts` и проверка семи экспортов на этапе
-  компиляции — тип `ContractCheck` в `src/index.ts`: удалённый или неверно типизированный
-  экспорт роняет typecheck, а не редактор на портале.
-- Типизированное зеркало конфига — `ChartConfig` в `src/modules/CustomChart/plugin.types.ts`
-  и `getDefaultConfig.ts` (свежая копия через `structuredClone` на каждый вызов).
+- Копия контракта ядра `src/types/chartPlugin.d.ts` (снимок `contractVersion 1.0.0`,
+  `coreVersion 3.16.3`) и проверка семи экспортов на этапе компиляции — тип `ContractCheck`
+  в `src/index.ts`: удалённый или неверно типизированный экспорт роняет typecheck, а не
+  редактор на портале.
+- Типизированное зеркало конфига — `ChartConfig` в
+  `src/modules/CustomChart/model/plugin.types.ts` и `getDefaultConfig.ts` (свежая копия через
+  `structuredClone` на каждый вызов).
+- Раскладка модуля `CustomChart` по роду файла: `model/` (типы, конфиг, чистые преобразования),
+  `ui/` (компоненты подложки), `hooks/`, `lib/` (чистые функции), `engine/` (мост к библиотеке
+  отрисовки — появляется вместе с ней). Наружу модуль отдаёт себя одним `index.ts`, поэтому
+  переезд файла между папками не правит импорты по проекту.
 - Тесты: Jest 30 на `@swc/jest`, спеки рядом с кодом. Покрыт каркас — модель конфига,
   редьюсер, `DataAdaptor`, `ConfigEditor`, `CustomAxes`, `CustomChart`, `useChartSize`.
 - ESLint 10 во flat config, `lint-staged` + husky 9 на коммите.
@@ -25,7 +31,12 @@
   плагинных типов в ядре. Оба метода `DataAdaptor` (`getQueryObjects`, `remapData`) остаются
   заглушками: их реализует новый плагин.
 - Хук `useChartSize` — размер контейнера для библиотеки отрисовки.
-- Конфигурация ИИ-агентов в `.claude/`: скиллы, сабагенты, хуки. Описана в `CLAUDE.md`.
+- Конфигурация ИИ-агентов в `.claude/`, описана в `CLAUDE.md`: 14 скиллов (правила языка,
+  цикл TDD, раскладка модулей, контракт запроса данных, жизненный цикл холста, подложка,
+  ECharts, панель настроек, сверка контракта, сборка дистрибутива, проверка в портале,
+  миграция), 4 сабагента (`test-writer` и `implementer` с непересекающимися правами на файлы,
+  `contract-reviewer`, `settings-flow-reviewer`) и 2 хука — запрет правок в `prebuild/`
+  и `tsc --noEmit` после каждой правки `.ts`/`.tsx`.
 - Документация: `CLAUDE.md` (архитектура и соглашения), `MIGRATION.md`, `CHANGELOG.md`.
 
 ### Изменено

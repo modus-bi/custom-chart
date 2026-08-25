@@ -1,6 +1,6 @@
 ---
 name: sync-contract
-description: Использовать при обновлении ядра ModusBI в prebuild/, при подозрении на расхождение src/types/chartPlugin.d.ts с prebuild/api/chartPlugin.d.ts, а также перед правкой контрактных экспортов плагина.
+description: 'Использовать при обновлении ядра ModusBI в prebuild/, при подозрении на расхождение src/types/chartPlugin.d.ts с prebuild/api/chartPlugin.d.ts, а также перед правкой контрактных экспортов плагина.'
 ---
 
 # Сверка контракта с ядром

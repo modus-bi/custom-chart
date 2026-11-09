@@ -13,4 +13,6 @@ module.exports = {
     '\\.(css|scss|sass)$': '<rootDir>/test/styleMock.js',
   },
   testPathIgnorePatterns: ['/node_modules/', '/build/', '/prebuild/'],
+  // Примеры навыков содержат свой package.json и не являются пакетами приложения.
+  modulePathIgnorePatterns: ['<rootDir>/.agents/skills/[^/]+/assets/'],
 };

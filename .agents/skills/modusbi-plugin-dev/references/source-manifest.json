@@ -1,0 +1,189 @@
+{
+    "repository":  "https://github.com/modus-bi/custom-chart",
+    "commit":  "fb5efa5ba9e8794b2265f100091cddb19911e9b6",
+    "retrieved":  "2026-09-07",
+    "files":  [
+                  {
+                      "path":  ".claude/agents/contract-reviewer.md",
+                      "sha256":  "5b62a1119f37d1963c0ec77034bc9c5dea6feb894ea20dcff7d1c97453454900"
+                  },
+                  {
+                      "path":  ".claude/agents/implementer.md",
+                      "sha256":  "74b4f7c9760e75df2f03d37a3746b4e5fa9be27559fdb42af7a678e69235d239"
+                  },
+                  {
+                      "path":  ".claude/agents/settings-flow-reviewer.md",
+                      "sha256":  "ffc9c69b8c07953ba068785f90db18512b946932aa56d2b6502e4eda46c2b619"
+                  },
+                  {
+                      "path":  ".claude/agents/test-writer.md",
+                      "sha256":  "6fd73ed2dd65fe32c9f6a79aa6e1c21630c67f0e80a0e40f3250607727514ce4"
+                  },
+                  {
+                      "path":  ".claude/hooks/guard-paths.sh",
+                      "sha256":  "772775c8182282f63703c826aaf88e1f722a8b516ac48bccf2f39370f25367cc"
+                  },
+                  {
+                      "path":  ".claude/hooks/typecheck.sh",
+                      "sha256":  "60531dd00c754ca71fe5f176cd466526a7a86babadf33ebac103cdf0082ff8fd"
+                  },
+                  {
+                      "path":  ".claude/settings.json",
+                      "sha256":  "2a59dd992a63d70e147e240a12c83b0ad41062b5325c8596af62060abdc8331e"
+                  },
+                  {
+                      "path":  ".claude/skills/chart-lifecycle/SKILL.md",
+                      "sha256":  "a8575f0437b7abb388397522fbedcbf99b5f6ed3a8ba2760f3ae6424ff6407b2"
+                  },
+                  {
+                      "path":  ".claude/skills/chart-shell/SKILL.md",
+                      "sha256":  "75d55355a7b93a699bee8d41f1ce323151f4d309faebb53228b08506cd2ec974"
+                  },
+                  {
+                      "path":  ".claude/skills/custom-axes-module/SKILL.md",
+                      "sha256":  "4e63ffe0386a327f1b3e33e2833d5142945d4a6c16cf1170faa8857b447b0739"
+                  },
+                  {
+                      "path":  ".claude/skills/custom-chart-module/SKILL.md",
+                      "sha256":  "f26f5190af70482c27899558f95fb67b680a587ae4c2ba565ca3e6a17ef5e5e3"
+                  },
+                  {
+                      "path":  ".claude/skills/custom-reducers-module/SKILL.md",
+                      "sha256":  "0db214945fe80af08a1fa249722e8d58b56eaab85ec5f89070d7facc8fa1ef43"
+                  },
+                  {
+                      "path":  ".claude/skills/data-query-contract/SKILL.md",
+                      "sha256":  "a6373b9b93425c43bce6eed79e75ca69c105e210f8a9085545bd431812b83e9b"
+                  },
+                  {
+                      "path":  ".claude/skills/echarts-engine/SKILL.md",
+                      "sha256":  "45dd26e98b5e79fd26c0600edfdd42cb223afc3ff4af56548af37df138a8085c"
+                  },
+                  {
+                      "path":  ".claude/skills/migrate-to-typescript/SKILL.md",
+                      "sha256":  "ad2fda016bd6d3456ab07f7a5737cb402092baac978ed0b95819186904363d10"
+                  },
+                  {
+                      "path":  ".claude/skills/new-setting/SKILL.md",
+                      "sha256":  "f06fe4eb6b823d1f4bc1b5a4527a32e3668e6102a178143a269e2548b06ca874"
+                  },
+                  {
+                      "path":  ".claude/skills/number-formatting/SKILL.md",
+                      "sha256":  "cc96a21823164b6fa2775dd42f947222a79c2f1ae9cf3fca6dce5e23746fcc64"
+                  },
+                  {
+                      "path":  ".claude/skills/package-plugin/SKILL.md",
+                      "sha256":  "9c182bc2589f7b66331e740a697367868d68a43d1516ca63b8f20e248f6a3cbe"
+                  },
+                  {
+                      "path":  ".claude/skills/portal-integration-testing/SKILL.md",
+                      "sha256":  "59b296d3571dff98b1939d733d7e0695f3f6dc8626505049d087b82bd45588f7"
+                  },
+                  {
+                      "path":  ".claude/skills/sync-contract/SKILL.md",
+                      "sha256":  "4bef3b332728220fadcb78992e9557390f2cd784a1ad2139afd47af2f017c4ff"
+                  },
+                  {
+                      "path":  ".claude/skills/tdd/SKILL.md",
+                      "sha256":  "0946080b49e4321299683bd05984030ee1de8ff03646afaec42fc21e1a3d63fe"
+                  },
+                  {
+                      "path":  ".claude/skills/typescript-coding-standards/SKILL.md",
+                      "sha256":  "fd52c9cbe9ea0b86b7373b767c8e843f4c30cd5a0ecc29021eb9a51a7b214c0f"
+                  },
+                  {
+                      "path":  ".claude/skills/uc-testing/SKILL.md",
+                      "sha256":  "40d73de962a730dcf2bc58ab4a2737cff2425d00d00a6ba5688772899b6d774e"
+                  },
+                  {
+                      "path":  ".prettierrc",
+                      "sha256":  "ed3e0b888169a33ec9da629a4880918a79992d55a03e63ffb72c19726ac14597",
+                      "bundledPath":  "assets/template-configs/.prettierrc"
+                  },
+                  {
+                      "path":  "CLAUDE.md",
+                      "sha256":  "324b5f2927de3851e685b0759d08fef1e29d596a0d2f1c60d514dc3b77dae969"
+                  },
+                  {
+                      "path":  "create-plugin.js",
+                      "sha256":  "9e82f52f20e24161cc81762351f4c6f5874ced98f9206aa74bd6e393a08b4656"
+                  },
+                  {
+                      "path":  "eslint.config.js",
+                      "sha256":  "10e6851910485338a509ee38621c87e4bb50a2971709c5be24faa3c4a084afb5",
+                      "bundledPath":  "assets/template-configs/eslint.config.js"
+                  },
+                  {
+                      "path":  "jest.config.js",
+                      "sha256":  "4e83c9b1d54be9c22a92f0bca0ec0a843a138c0db5dda8a0dd641e75ca04918b",
+                      "bundledPath":  "assets/template-configs/jest.config.js"
+                  },
+                  {
+                      "path":  "LICENSE.docx",
+                      "sha256":  "5f9287a221cd7ae5a44727626520b6f6a034d71ff86f4d069c0a0b4728d08393",
+                      "bundledPath":  "assets/UPSTREAM-LICENSE.docx"
+                  },
+                  {
+                      "path":  "manifest.example.json",
+                      "sha256":  "eee69abe0f81e87fe9eef0d3d96b884b8d15a325244f213217f47a9c072f98a1",
+                      "bundledPath":  "assets/manifest.example.json"
+                  },
+                  {
+                      "path":  "MIGRATION.md",
+                      "sha256":  "39309e6bfccb89828da808450d04d2dc8e999ed3157721f09f4f715299e2f0da"
+                  },
+                  {
+                      "path":  "package.json",
+                      "sha256":  "3a7eddcaa945bedc5439882fcf125202c5ac870bedb548c8508b626a7f48a5ff",
+                      "bundledPath":  "assets/template-configs/package.json"
+                  },
+                  {
+                      "path":  "package-lock.json",
+                      "sha256":  "742dc6c487a315cbe091c0af69c1628154ea721bce1ba5ab80d4d8561bb771fa"
+                  },
+                  {
+                      "path":  "README.md",
+                      "sha256":  "133b02edd5123428a011363b797a48a28c50204243260afe5e29da4652168216"
+                  },
+                  {
+                      "path":  "src/index.ts",
+                      "sha256":  "d27ca8c8404e7f34677ff5ab7f42e3d312b09943b0492d980b822fcdb995d6f6"
+                  },
+                  {
+                      "path":  "src/modules/CustomChart/CustomChart.tsx",
+                      "sha256":  "5576b102860fb4e615dc699a36265dab017acab7d6ce16b765ac3fe50c1f8dcc"
+                  },
+                  {
+                      "path":  "src/modules/CustomChart/dataAdaptor.ts",
+                      "sha256":  "e046e37cb95812d86f9f4e7856929ae7e45bcdd179f6260f9d8c791203eaa927"
+                  },
+                  {
+                      "path":  "src/modules/CustomChart/model/plugin.types.ts",
+                      "sha256":  "0d63fb8b48b8f0499c77ccc221eaa1d7ac2eceb85dee64296b4bcf0cc567bd5b"
+                  },
+                  {
+                      "path":  "src/types/chartPlugin.d.ts",
+                      "sha256":  "2ca08ec146ce09d50728dca18459a7febe77cc0fe52e384a85098d332599640c"
+                  },
+                  {
+                      "path":  "swc.config.js",
+                      "sha256":  "dfa98e634fbb0082d9f0d1ee839aaaa25dde00c97793d97abca0da6de16f47ea",
+                      "bundledPath":  "assets/template-configs/swc.config.js"
+                  },
+                  {
+                      "path":  "test/styleMock.js",
+                      "sha256":  "1f4df430896ce1c55bd41d901e4824fd11ae8da0ec7184ea6b426956d68ec97c",
+                      "bundledPath":  "assets/template-configs/test/styleMock.js"
+                  },
+                  {
+                      "path":  "tsconfig.json",
+                      "sha256":  "dd80a6c5be402de4b4dee6637b383681802538af17b81e70d5ab45c684ded7aa",
+                      "bundledPath":  "assets/template-configs/tsconfig.json"
+                  },
+                  {
+                      "path":  "webpack.config.js",
+                      "sha256":  "ef0750540fc5b06301d441fa402502c84ec01eddf50ed1c188a8ce50d17fa0aa",
+                      "bundledPath":  "assets/template-configs/webpack.config.js"
+                  }
+              ]
+}

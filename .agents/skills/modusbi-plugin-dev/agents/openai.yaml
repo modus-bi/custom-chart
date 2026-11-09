@@ -1,0 +1,4 @@
+interface:
+  display_name: "ModusBI: разработка плагинов"
+  short_description: "Плагины ModusBI: разработка, тесты и сборка"
+  default_prompt: "Используй $modusbi-plugin-dev для разработки плагина визуализации ModusBI; сначала изучи проект и уточни решения, которых нет в требованиях и исходниках."

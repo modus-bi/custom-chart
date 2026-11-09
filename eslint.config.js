@@ -11,6 +11,7 @@ module.exports = [
   ...tseslint.configs.recommended,
   {
     languageOptions: {
+      parserOptions: { tsconfigRootDir: __dirname },
       globals: { ...globals.browser, ...globals.node },
     },
   },

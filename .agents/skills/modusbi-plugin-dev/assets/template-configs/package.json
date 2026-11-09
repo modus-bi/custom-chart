@@ -1,0 +1,63 @@
+{
+  "name": "template-plugin",
+  "version": "1.0.0",
+  "description": "Шаблон плагина для ModusBI",
+  "main": "index.ts",
+  "author": "amerk <a1argus@gmail.com>",
+  "browserslist": "> 0.25%, not dead",
+  "engines": {
+    "node": ">=22.15.0",
+    "npm": ">=10"
+  },
+  "scripts": {
+    "build": "webpack --mode production",
+    "build:dev": "webpack --mode development",
+    "start": "webpack serve --mode development",
+    "test": "jest --passWithNoTests",
+    "test:watch": "jest --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "build:plugin": "node create-plugin.js",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --max-warnings=0"
+    ]
+  },
+  "peerDependencies": {
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/mcp": "^0.0.79",
+    "@swc/core": "^1.16.0",
+    "@swc/jest": "^0.2.39",
+    "@testing-library/react": "^12.1.5",
+    "@types/jest": "^30.0.0",
+    "@types/react": "^16.14.70",
+    "css-loader": "^7.1.4",
+    "eslint": "^10.8.1",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.11.0",
+    "husky": "^9.1.7",
+    "jest": "^30.4.2",
+    "jest-environment-jsdom": "^30.4.1",
+    "lint-staged": "^16.4.0",
+    "prettier": "^3.9.6",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "sass": "^1.102.0",
+    "sass-loader": "^17.0.0",
+    "style-loader": "^4.0.0",
+    "swc-loader": "^0.2.7",
+    "tar": "^7.5.22",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.67.0",
+    "webpack": "^5.109.2",
+    "webpack-cli": "^7.2.2",
+    "webpack-dev-server": "^6.0.0"
+  }
+}
